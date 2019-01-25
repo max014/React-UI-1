@@ -1,0 +1,39 @@
+.Content{
+	transform: translateY(-50%);
+	position: absolute;
+	top: 50%;
+	left: 0;
+	right: 40%;
+	padding-left: 20%;
+	padding-right: 10%;
+	box-sizing: border-box;
+	z-index: 2;
+	transition: all 300ms ease;
+}
+.Content h1{
+	color: #fff;
+	margin: 0;
+	font-size: 100px;
+	font-family: 'Montserrat', sans-serif;
+	text-transform: uppercase;
+	font-weight: 400;
+    letter-spacing: 1px;
+}
+.Content p{
+	color: #fff;
+	width: 100%;
+}
+
+@media(max-width:767px){
+	.Content{
+		padding: 0;
+		transform: translateY(0);
+		top: 20%;
+		left: 5%;
+		right: 5%;
+		z-index: 0;
+	}
+	.Content p{
+		width: 90%;
+	}
+}

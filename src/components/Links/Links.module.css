@@ -1,0 +1,57 @@
+.Links{
+	position: absolute;
+	transform: translateY(-50%);
+	top: 50%;
+	right: 0;
+	width: 40%;
+	transition: all 500ms ease;
+}
+.Links div{
+	height: 25vh;
+	background-color: #999;
+	margin: 50px 0;
+}
+.Links .tab {
+	display: none;
+}
+
+@media(max-width: 1224px){
+	.Links{
+		width: 30%;
+	}
+}
+
+@media(max-width:767px){
+	.Links{
+		transform: translateY(0);
+		top: auto;
+		bottom: -300px;
+		width: 100%;
+	}
+	.Active{
+		bottom: 0;
+	}
+	.Links div{
+		height: 100px;
+		margin: 0;
+	}
+	.Links .tab{
+		display: block;
+		height: 7px;
+		background-color: #fff;
+		position: absolute;
+		top: -7px;
+		width: 100%;
+	}
+	.Links .tab .circle{
+		position: absolute;
+		transform: translateX(-50%);
+		top: -20px;
+		left: 50%;
+		background-color: #fff;
+		width: 40px;
+		height: 20px;
+		border-top-right-radius: 15px;
+		border-top-left-radius: 15px;
+	}
+}
