@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import logo from './logo.svg';
+import { Route, Switch, withRouter } from 'react-router-dom';
 import Page from './containers/Page/Page';
+import { TransitionGroup, CSSTransition } from "react-transition-group";
 import styles from './App.module.css';
 
 import image1 from './img/smaller.jpg';
@@ -70,38 +70,50 @@ class App extends Component {
 
 	render() {
 	    return (
-	        <BrowserRouter>
-		        <div className={styles.App}>
-			        <Switch>
-				        <Route path="/" exact render={() => 
-				        	<Page
-								active={true}
-								page={this.state.pages.page1}
-								links={this.getLinks(this.state.pages.page1)} />}>
-				        </Route>
-				        <Route path="/about" exact render={() => 
-				        	<Page
-								active={true}
-								page={this.state.pages.page2}
-								links={this.getLinks(this.state.pages.page2)} />}>
-				        </Route>
-				        <Route path="/more" exact render={() => 
-				        	<Page
-								active={true}
-								page={this.state.pages.page3}
-								links={this.getLinks(this.state.pages.page3)} />}>
-				        </Route>
-				        <Route path="/contact" exact render={() => 
-				        	<Page
-								active={true}
-								page={this.state.pages.page4}
-								links={this.getLinks(this.state.pages.page4)} />}>
-				        </Route>
-			        </Switch>
-		        </div>
-	        </BrowserRouter>
+	    	<Route render={({location}) => (
+				<TransitionGroup>
+					
+			        <CSSTransition
+			          key={location.key}
+			          timeout={{ enter: 300, exit: 300 }}
+			          classNames={'fade'}
+			        >
+				        <section  className={styles.TransitionGroup}>
+					        <div className={styles.App}>
+						        <Switch location={location}>
+							        <Route path="/" exact render={() => 
+							        	<Page
+											active={true}
+											page={this.state.pages.page1}
+											links={this.getLinks(this.state.pages.page1)} />}>
+							        </Route>
+							        <Route path="/about" exact render={() => 
+							        	<Page
+											active={true}
+											page={this.state.pages.page2}
+											links={this.getLinks(this.state.pages.page2)} />}>
+							        </Route>
+							        <Route path="/more" exact render={() => 
+							        	<Page
+											active={true}
+											page={this.state.pages.page3}
+											links={this.getLinks(this.state.pages.page3)} />}>
+							        </Route>
+							        <Route path="/contact" exact render={() => 
+							        	<Page
+											active={true}
+											page={this.state.pages.page4}
+											links={this.getLinks(this.state.pages.page4)} />}>
+							        </Route>
+						        </Switch>
+					        </div>
+					    </section>
+				    </CSSTransition>
+					
+				</TransitionGroup>
+	        )} />
 	    );
 	}
 }
 
-export default App;
+export default withRouter(App);

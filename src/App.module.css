@@ -3,4 +3,10 @@
 	overflow: hidden;
 	height: 100vh;
 	background-color: #222;
+	transition: all 800ms ease-in-out;
 }
+.TransitionGroup{
+	position: absolute;
+	width: 100vw;
+}
+
