@@ -6,10 +6,15 @@
 	width: 40%;
 	transition: all 500ms ease;
 }
-.Links div{
+.pageLink{
 	height: 25vh;
-	background-color: #999;
 	margin: 50px 0;
+}
+.pageLink h1{
+	font-size: 50px;
+}
+.pageLink>div>div{
+	opacity: .2;
 }
 .Links .tab {
 	display: none;
@@ -18,6 +23,9 @@
 @media(max-width: 1224px){
 	.Links{
 		width: 30%;
+	}
+	.pageLink h1{
+		font-size: 30px
 	}
 }
 

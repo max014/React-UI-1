@@ -1,19 +1,107 @@
 import React, { Component } from 'react';
-import { BrowserRouter } from 'react-router-dom';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import logo from './logo.svg';
 import Page from './containers/Page/Page';
 import styles from './App.module.css';
 
+import image1 from './img/smaller.jpg';
+import image2 from './img/ombre.jpg';
+import image3 from './img/redhead.png';
+import image4 from './img/blonde.png';
+
+const content = `Lorem ipsum dolor sit amet, consectetur 
+				adipiscing elit, sed do eiusmod tempor 
+				incididunt ut labore et dolore magna 
+				aliqua. Ut enim ad minim veniam, quis 
+				nostrud exercitation ullamco laboris 
+				nisi ut aliquip ex ea commodo consequat. 
+				Duis aute irure dolor in reprehenderit 
+				in voluptate velit esse cillum dolore eu 
+				fugiat nulla pariatur. Excepteur sint 
+				occaecat cupidatat non proident, sunt 
+				in culpa qui officia deserunt mollit anim 
+				id est laborum.`
+
 class App extends Component {
-  render() {
-    return (
-      <BrowserRouter>
-        <div className={styles.App}>
-          <Page />
-        </div>
-      </BrowserRouter>
-    );
-  }
+	state = {
+		pages: {
+			page1: {
+				title: "Home",
+				content: content,
+				slug: "/",
+				backgroundImage: image1
+			},
+			page2: {
+				title: "About",
+				content: content,
+				slug: "/about",
+				backgroundImage: image2
+			},
+			page3: {
+				title: "More",
+				content: content,
+				slug: "/more",
+				backgroundImage: image3
+			},
+			page4: {
+				title: "Contact",
+				content: content,
+				slug: "/contact",
+				backgroundImage: image4
+			}
+		}
+	}
+
+	allPages = [this.state.pages.page1,this.state.pages.page2,this.state.pages.page3,this.state.pages.page4];
+	lastPage = null;
+
+	getLinks(thisPage) {
+		if (this.allPages.length === 4){
+			this.allPages = this.allPages.filter((page) => {
+				return page !== thisPage;
+			})
+		} else {
+			const index = this.allPages.indexOf(thisPage);
+			this.allPages[index] = this.lastPage;
+		}
+		this.lastPage = thisPage;
+		return this.allPages;
+	}
+
+	render() {
+	    return (
+	        <BrowserRouter>
+		        <div className={styles.App}>
+			        <Switch>
+				        <Route path="/" exact render={() => 
+				        	<Page
+								active={true}
+								page={this.state.pages.page1}
+								links={this.getLinks(this.state.pages.page1)} />}>
+				        </Route>
+				        <Route path="/about" exact render={() => 
+				        	<Page
+								active={true}
+								page={this.state.pages.page2}
+								links={this.getLinks(this.state.pages.page2)} />}>
+				        </Route>
+				        <Route path="/more" exact render={() => 
+				        	<Page
+								active={true}
+								page={this.state.pages.page3}
+								links={this.getLinks(this.state.pages.page3)} />}>
+				        </Route>
+				        <Route path="/contact" exact render={() => 
+				        	<Page
+								active={true}
+								page={this.state.pages.page4}
+								links={this.getLinks(this.state.pages.page4)} />}>
+				        </Route>
+			        </Switch>
+		        </div>
+	        </BrowserRouter>
+	    );
+	}
 }
 
 export default App;

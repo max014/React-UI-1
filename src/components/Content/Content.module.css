@@ -9,6 +9,7 @@
 	box-sizing: border-box;
 	z-index: 2;
 	transition: all 300ms ease;
+	opacity: 1 !important;
 }
 .Content h1{
 	color: #fff;
@@ -22,6 +23,7 @@
 .Content p{
 	color: #fff;
 	width: 100%;
+	font-size: 18px;
 }
 
 @media(max-width:767px){
@@ -32,6 +34,9 @@
 		left: 5%;
 		right: 5%;
 		z-index: 0;
+	}
+	.Content h1{
+		font-size: 70px;
 	}
 	.Content p{
 		width: 90%;
