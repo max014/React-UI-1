@@ -71,14 +71,14 @@ class App extends Component {
 	render() {
 	    return (
 	    	<Route render={({location}) => (
-				<TransitionGroup>
+				<TransitionGroup className={styles.TransitionGroup}>
 					
 			        <CSSTransition
 			          key={location.key}
-			          timeout={{ enter: 300, exit: 300 }}
+			          timeout={{ enter: 500, exit: 500 }}
 			          classNames={'fade'}
 			        >
-				        <section  className={styles.TransitionGroup}>
+				        <section  className={styles.TransitionGroupSection}>
 					        <div className={styles.App}>
 						        <Switch location={location}>
 							        <Route path="/" exact render={() => 
