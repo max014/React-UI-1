@@ -7,15 +7,33 @@
 	transition: all 500ms ease;
 }
 .pageLink{
+	position: relative;
 	height: 25vh;
 	margin: 50px 0;
+	background-size: cover;
+	background-position: center;
 }
 .pageLink h1{
 	font-size: 50px;
+	color: #fff;
+	text-decoration: none;
+	position: absolute;
+	transform: translate(50%, -50%);
+	margin: 0;
+	top: 50%;
+	right: 50%;
+	font-weight: 400;
 }
-.pageLink>div>div{
-	opacity: .2;
+.overlay{
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 100%;
+	background-color: #000;
+	opacity: .1;
 }
+
 .Links .tab {
 	display: none;
 }
@@ -23,9 +41,6 @@
 @media(max-width: 1224px){
 	.Links{
 		width: 30%;
-	}
-	.pageLink h1{
-		font-size: 30px
 	}
 }
 

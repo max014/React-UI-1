@@ -7,19 +7,13 @@ const page = (props) => {
 	const inlineStyles = {
 		backgroundImage: `url(${props.page.backgroundImage })`
 	}
-	let content = null;
-	let links = null;
-	if (props.active){
-		content = props.page.content;
-		links = <Links links={props.links} />;
-	}
 	return (
 		<div style={inlineStyles} className={styles.Page}>
 			<div className={styles.overlay}></div>
 			<Content title={props.page.title}>
-				{content}
+				{props.page.content}
 			</Content>
-			{links}
+			<Links links={props.links} />
 		</div>
 	);
 }

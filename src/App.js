@@ -32,21 +32,21 @@ class App extends Component {
 				backgroundImage: image1
 			},
 			page2: {
-				title: "About",
+				title: "Page 1",
 				content: content,
-				slug: "/about",
+				slug: "/1",
 				backgroundImage: image2
 			},
 			page3: {
-				title: "More",
+				title: "Page 2",
 				content: content,
-				slug: "/more",
+				slug: "/2",
 				backgroundImage: image3
 			},
 			page4: {
-				title: "Contact",
+				title: "Page 3",
 				content: content,
-				slug: "/contact",
+				slug: "/3",
 				backgroundImage: image4
 			}
 		}
@@ -72,7 +72,6 @@ class App extends Component {
 	    return (
 	    	<Route render={({location}) => (
 				<TransitionGroup className={styles.TransitionGroup}>
-					
 			        <CSSTransition
 			          key={location.key}
 			          timeout={{ enter: 500, exit: 500 }}
@@ -83,25 +82,21 @@ class App extends Component {
 						        <Switch location={location}>
 							        <Route path="/" exact render={() => 
 							        	<Page
-											active={true}
 											page={this.state.pages.page1}
 											links={this.getLinks(this.state.pages.page1)} />}>
 							        </Route>
-							        <Route path="/about" exact render={() => 
+							        <Route path="/1" exact render={() => 
 							        	<Page
-											active={true}
 											page={this.state.pages.page2}
 											links={this.getLinks(this.state.pages.page2)} />}>
 							        </Route>
-							        <Route path="/more" exact render={() => 
+							        <Route path="/2" exact render={() => 
 							        	<Page
-											active={true}
 											page={this.state.pages.page3}
 											links={this.getLinks(this.state.pages.page3)} />}>
 							        </Route>
-							        <Route path="/contact" exact render={() => 
+							        <Route path="/3" exact render={() => 
 							        	<Page
-											active={true}
 											page={this.state.pages.page4}
 											links={this.getLinks(this.state.pages.page4)} />}>
 							        </Route>
